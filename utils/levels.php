@@ -17,7 +17,6 @@ class Levels
 	// constructor takes the number of levels and computes the expierence based on the number of levels
 	public function __construct( $levels )
 	{
-		$this->points = array();
 		$this->xp = new XP();
 		$this->levels = $levels;
 		$this->calculated = false;
@@ -26,10 +25,12 @@ class Levels
 	// method that computes the expierence points based on the xp number
 	private function XpPerLevel()
 	{
-		for( $i = 0; $i < $this->levels; $i++ )
+		for( $i = 1; $i <= $this->levels; $i++ )
 		{
-			$this->points[] = array( $i + 1 => $this->xp->Compute( $i + 1 ) );
+			$this->points[$i] = $this->xp->Compute( $i );
 		}
+		
+		$this->points[$this->levels + 1] = $this->xp->Compute( $this->levels + 1 );
 		
 		$this->calculated = true;
 	}
@@ -46,6 +47,11 @@ class Levels
 			
 			return $this->points;
 		}
+	}
+	
+	public function GetLevels()
+	{
+		return $this->levels;
 	}
 }
 ?>
