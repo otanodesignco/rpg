@@ -1,7 +1,7 @@
-rpg
+GameBot
 ===
 
-a platform for rpg/gamification for a website.
+Game bot is a full featured gamification platform that goes beyond Leaderboards or Badges but includes a loot system, skill tree, and quest/mission system. The aim is to bring real game mechanics to the web. Apache 2.0 License
 
 To-do
 
