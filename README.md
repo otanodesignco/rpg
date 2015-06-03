@@ -5,6 +5,7 @@ Game bot is a full featured gamification platform that goes beyond Leaderboards 
 
 To-do
 
+  * Modifiers have been rewrote, factory still needed
   * Add skill tree/ talent tree code
-  * Add ranks code - done, need to add database table now
+  * Add item, weapon, and rarity rewrite in-progress
   * Add badges/ achievements code
