@@ -26,20 +26,6 @@ class Rank
 	{
 		$this->icon = $rank_icon;
 	}
-	public function addUnlock( $rank_unlock_name, $rank_unlock )
-	{
-		if( !array_key_exists( $rank_unlock_name, $this->unlocks ) )
-		{
-			$this->unlocks[$rank_unlock_name] = $rank_unlock;
-		}
-	}
-	public function addBadge( $rank_badge_name, $rank_badge )
-	{
-		if( !array_key_exists( $rank_badge_name, $this->badges ) )
-		{
-			$this->badges[$rank_badge_name] = $rank_badge;
-		}
-	}
 	public function setNextRankXP( $rank_nxt_rank_xp )
 	{
 		$this->nxt_rank = $rank_nxt_rank_xp;
@@ -73,11 +59,37 @@ class Rank
 	{
 		return $this->nxt_rank;
 	}
+	
+	public function addUnlock( $rank_unlock_name, $rank_unlock )
+	{
+		if( !array_key_exists( $rank_unlock_name, $this->unlocks ) )
+		{
+			$this->unlocks[$rank_unlock_name] = $rank_unlock;
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
+	public function addBadge( $rank_badge_name, $rank_badge )
+	{
+		if( !array_key_exists( $rank_badge_name, $this->badges ) )
+		{
+			$this->badges[$rank_badge_name] = $rank_badge;
+			return true;
+		}
+		else
+		{
+			return false;
+		}
+	}
 	public function removeBadge( $rank_badge_name )
 	{
 		if( array_key_exist( $rank_badge_name, $this->badges ) )
 		{
 			unset( $this->badges[$rank_badge_name] );
+			$this->badges = array_values( $this->badges );
 			return true;
 		}
 		else
@@ -90,12 +102,21 @@ class Rank
 		if( array_key_exist( $rank_unlock_name, $this->unlocks ) )
 		{
 			unset( $this->unlocks[$rank_unlock_name] );
+			$this->unlocks = array_values( $this->unlocks );
 			return true;
 		}
 		else
 		{
 			return false;
 		}
+	}
+	public function hasUnlocks()
+	{
+		return ( ( count( $this->unlocks ) > 0 ) ? true : false );
+	}
+	public function hasBadges()
+	{
+		return ( ( count( $this->badges ) > 0 ) ? true : false );
 	}
 }
 ?>

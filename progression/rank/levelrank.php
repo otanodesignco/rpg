@@ -19,6 +19,7 @@ class LevelRank extends Rank
 		if( array_key_exists( $level, $this->levels ) )
 		{
 			unset( $this->levels[$level] );
+			$this->levels = array_values( $this->levels );
 			return true;
 		}
 		else
